@@ -1,0 +1,66 @@
+{
+  "title": "Nextflow for the life sciences (NF4LS) Trainers materials",
+  "upload_type": "lesson",
+  "description": "<p>This training material is designed to help other Trainers re-run and adapt the 'Nextflow for the life sciences' workshop for their own learners. It includes ready-to-use materials and guidance for delivering a two-part workshop on building reproducible and scalable scientific workflows with Nextflow.</p><p>Nextflow is a popular bioinformatics workflow orchestrator that supports portable, reproducible, and scalable analysis across different computational infrastructures. It enables the use of software containers, integration of tools written in different languages, and optimisation for varied data types and computing environments.</p><p>The workshop materials are structured in two parts: Part one covers the fundamentals of Nextflow pipeline development using Hello Nextflow. Part two provides hands-on practice in creating a multi-sample Nextflow workflow for RNA-seq data preparation.</p><p><strong>Format:</strong> Originally delivered as two 4-hour sessions. Adaptable for online, in-person, distributed/hybrid, or self-paced delivery.</p><p><strong>Target audience:</strong> Trainers delivering Nextflow workshops, facilitators supporting hands-on training events, and contributors developing or maintaining Nextflow training curricula.</p><p><strong>Prerequisites:</strong> Familiarity with basic command-line usage and workflow concepts.</p><p><strong>Learning outcomes:</strong> By the end of the workshop, learners should be able to identify the core components of a Nextflow workflow; explain how Nextflow enables reproducible, portable, and scalable workflows; explain key Nextflow concepts including channels, operators, and dataflow; run a Nextflow workflow locally; build a simple multi-step workflow using core Nextflow components; locate and interpret workflow outputs and log files; troubleshoot basic workflow issues; analyse workflow behaviour when processing multiple samples in parallel; and develop a scalable workflow for multi-sample data processing.</p><p>Contact: georgina.samaha@sydney.edu.au</p>",
+  "creators": [
+    {
+      "name": "Samaha, Georgina",
+      "affiliation": "Sydney Informatics Hub, University of Sydney",
+      "orcid": "0000-0003-0419-1476"
+    },
+    {
+      "name": "Geaghan, Michael",
+      "orcid": "0000-0002-4350-8600"
+    },
+    {
+      "name": "Jaya, Frederick",
+      "orcid": "0000-0002-4019-7026"
+    },
+    {
+      "name": "O’Brien, Mitchell",
+      "orcid": "0000-0003-0662-9101"
+    },
+    {
+      "name": "Mori, Giorgia",
+      "orcid": "0000-0003-3469-5632"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "language": "eng",
+  "keywords": [
+    "Bioinformatics",
+    "Analysis",
+    "Workflows",
+    "Nextflow",
+    "Reproducible workflows",
+    "Training materials",
+    "RNA-seq",
+    "cli"
+  ],
+  "subjects": [
+    {
+      "term": "Bioinformatics",
+      "identifier": "http://edamontology.org/topic_0091",
+      "scheme": "url"
+    },
+    {
+      "term": "Analysis",
+      "identifier": "http://edamontology.org/operation_2945",
+      "scheme": "url"
+    },
+    {
+      "term": "Workflows",
+      "identifier": "http://edamontology.org/topic_0769",
+      "scheme": "url"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Sydney-Informatics-Hub/nf4ls-materials",
+      "relation": "isSupplementedBy",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Technical requirements: participants require a personal computer with VSCode (or comparable code editor), a web browser, and access to the selected training environment (cloud VM, institutional HPC/shared compute, local installation, or preconfigured environment). Before the workshop, participants should install required software/extensions and confirm connectivity to the training environment."
+}
