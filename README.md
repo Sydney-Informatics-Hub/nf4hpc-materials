@@ -36,7 +36,7 @@ Materials developed by the [Sydney Informatics Hub](https://www.sydney.edu.au/re
 These materials have been developed by:
 
 - Georgie Samaha, Sydney Informatics Hub, University of Sydney
-- Fred Jaya, Sydney Informatics Hub, University of Sydney
 - Michael Geaghan, Sydney Informatics Hub, University of Sydney
 - Mitchell O'Brien, Sydney Informatics Hub, University of Sydney
+- Fred Jaya, Sydney Informatics Hub, University of Sydney
 - Giorgia Mori, Australian BioCommons
