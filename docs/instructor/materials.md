@@ -24,8 +24,8 @@ The aim is to introduce practical HPC workflow execution and the Nextflow featur
 | -------- | ---- |
 | Participant-facing lessons | [Workshop materials](../workshop/index.md) |
 | Workshop code and example workflows | [Insert link](INSERT-CODE-URL) |
-| Training data | [Insert link or access instructions](INSERT-DATA-URL) |
-| HPC configuration and submission scripts | [Insert link](INSERT-CONFIGURATION-URL) |
+| Training data | Included in the `data/` folder of [nextflow-on-hpc-materials](https://github.com/Sydney-Informatics-Hub/nextflow-on-hpc-materials). Participants clone it in [lesson 1.0.2](../workshop/part1/01_0_intro.md#102-setup-the-workspace); see [Training infrastructure](environment.md#workshop-files-and-data) |
+| HPC configuration and submission scripts | Built by learners during the lessons (1.3, 1.8, 2.1). Reference versions: the [NCI Gadi](https://nf-co.re/configs/nci_gadi/) and [Pawsey Setonix](https://nf-co.re/configs/pawsey_setonix/) nf-core configs |
 | Presentation slides | [Insert link](INSERT-SLIDES-URL) |
 | Completed examples and troubleshooting logs | [Insert link](INSERT-EXAMPLES-URL) |
 
