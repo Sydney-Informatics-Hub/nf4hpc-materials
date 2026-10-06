@@ -1,0 +1,82 @@
+{
+  "title": "Nextflow for HPC trainers materials",
+  "upload_type": "lesson",
+  "description": "<p>This training material is designed to help other trainers re-run and adapt the 'Nextflow for HPC' workshop for their own learners. It includes ready-to-use lessons and guidance for delivering a two-part workshop on running reproducible and scalable scientific workflows with Nextflow on high performance computing (HPC) systems.</p><p>Nextflow is a popular bioinformatics workflow orchestrator that supports portable, reproducible, and scalable analysis across different computational infrastructures. It integrates with HPC job schedulers such as PBS Pro and Slurm, manages parallel task execution, and supports software containers for reproducible analysis.</p><p>The workshop materials are structured in two parts, using whole genome sequencing (WGS) short variant calling as a running example. Part one covers conceptual HPC foundations (shared systems, schedulers, software modules and containers, resource requests and job costs) and applies them to configuring and running the nf-core/sarek pipeline on HPC. Part two provides hands-on practice configuring, profiling, optimising, and scaling a custom multi-sample Nextflow workflow on HPC. Example code is provided for NCI Gadi (PBS Pro) and Pawsey Setonix (Slurm) and can be adapted to other HPC systems.</p><p><strong>Format:</strong> Originally delivered as two half-day sessions. Adaptable for online, in-person, distributed/hybrid, or self-paced delivery.</p><p><strong>Target audience:</strong> Trainers delivering Nextflow workshops, facilitators supporting hands-on training events, and contributors developing or maintaining Nextflow training curricula. The workshop itself is aimed at researchers and bioinformaticians who have run simple Nextflow pipelines and want to scale them up on HPC.</p><p><strong>Prerequisites:</strong> Completion of an introductory Nextflow workshop (e.g. Hello Nextflow) or equivalent experience, basic command-line skills, and familiarity with how HPC clusters work (e.g. job submission, compute nodes).</p><p><strong>Learning outcomes:</strong> By the end of the workshop, learners should be able to describe what an HPC is and recognise when a workflow needs one; load software with environment modules and run tools in Singularity containers; submit and monitor scheduler jobs and inspect their resource usage; explain how CPU, memory, and walltime requests affect scheduling and cost; distinguish multi-threading from scatter-gather parallelisation; configure Nextflow executors, queues, and containers to run workflows on HPC; layer institutional and run-level configuration files to tune nf-core and custom pipelines; use Nextflow reports, timelines, and trace files to profile resource usage; implement multi-threading and scatter-gather in a Nextflow workflow; and scale an optimised workflow to multiple samples.</p><p>Contact: georgina.samaha@sydney.edu.au</p>",
+  "creators": [
+    {
+      "name": "Samaha, Georgina",
+      "affiliation": "Sydney Informatics Hub, University of Sydney",
+      "orcid": "0000-0003-0419-1476"
+    },
+    {
+      "name": "Geaghan, Michael",
+      "orcid": "0000-0002-4350-8600"
+    },
+    {
+      "name": "Jaya, Frederick",
+      "orcid": "0000-0002-4019-7026"
+    },
+    {
+      "name": "O’Brien, Mitchell",
+      "orcid": "0000-0003-0662-9101"
+    },
+    {
+      "name": "Mori, Giorgia",
+      "orcid": "0000-0003-3469-5632"
+    }
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "language": "eng",
+  "keywords": [
+    "Bioinformatics",
+    "Workflows",
+    "Nextflow",
+    "nf-core",
+    "High performance computing",
+    "HPC",
+    "PBS Pro",
+    "Slurm",
+    "Containers",
+    "Reproducible workflows",
+    "Workflow optimisation",
+    "Variant calling",
+    "Training materials",
+    "cli"
+  ],
+  "subjects": [
+    {
+      "term": "Bioinformatics",
+      "identifier": "http://edamontology.org/topic_0091",
+      "scheme": "url"
+    },
+    {
+      "term": "Workflows",
+      "identifier": "http://edamontology.org/topic_0769",
+      "scheme": "url"
+    },
+    {
+      "term": "Computer science",
+      "identifier": "http://edamontology.org/topic_3316",
+      "scheme": "url"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/Sydney-Informatics-Hub/nf4hpc-materials",
+      "relation": "isSupplementedBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/Sydney-Informatics-Hub/nextflow-on-hpc-materials",
+      "relation": "isSupplementedBy",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://sydney-informatics-hub.github.io/nextflow-hpc-workshop/",
+      "relation": "isDerivedFrom",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Technical requirements: participants require a personal computer with VSCode (with the Remote - SSH extension) or a comparable code editor, an SSH client, a web browser, and an account on the training HPC system (the materials use NCI Gadi and Pawsey Setonix). The training HPC must provide Nextflow, Singularity/Apptainer, and a supported job scheduler (e.g. PBS Pro or Slurm), with sufficient compute allocation and scratch storage for all participants. Before the workshop, participants should install required software/extensions and confirm they can connect to their assigned HPC."
+}
