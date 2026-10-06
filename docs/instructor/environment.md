@@ -101,12 +101,12 @@ Stage the workshop files and data before the session.
 | Resource | Location or setup instructions |
 | -------- | ------------------------------ |
 | Workshop code | [Insert repository URL and release] |
-| Input data | [Nextflow on HPC materials](https://github.com/Sydney-Informatics-Hub/nextflow-on-hpc-materials) |
-| Nextflow configuration | [Insert configuration path or profile name] |
+| Input data | `data/` in [nextflow-on-hpc-materials](https://github.com/Sydney-Informatics-Hub/nextflow-on-hpc-materials): paired FASTQs for three samples (`data/fqs/`, with samplesheets), and the chr20–22 reference FASTA, index, dictionary, and BWA index (`data/ref/`) |
+| Nextflow configuration | Part 1: `config-demo-nf` profiles `pbspro`/`slurm`, then learners build `config/gadi.config` or `config/setonix.config` and `config/custom.config` for sarek. Part 2: `config/pbspro.config` or `config/slurm.config` (via `-profile`) plus `config/custom.config` |
 | Container images | [Insert image locations] |
 | Example outputs and logs | [Insert location of fallback materials] |
 
-[Explain whether participants copy files into their own directories or access shared, read-only inputs.]
+Each participant clones `nextflow-on-hpc-materials` into their own scratch directory (`/scratch/vp91/<user>` on Gadi, `/scratch/courses01/<user>` on Setonix) and runs the setup script for their system, as described in [lesson 1.0.2](../workshop/part1/01_0_intro.md#102-setup-the-workspace). All lessons then read the data by relative path (`../data/...`). Trainers can run this setup ahead of time for each training account; tell participants on the day whether it has already been done.
 
 ## Containers
 
