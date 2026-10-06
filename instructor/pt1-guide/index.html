@@ -1,0 +1,1995 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../materials/">
+      
+      
+        <link rel="next" href="../pt2-guide/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Part 1 - Nextflow for HPC workshop materials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-TNWWV3HK57"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-TNWWV3HK57",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-TNWWV3HK57",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-1-teaching-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Nextflow for HPC workshop materials" class="md-header__button md-logo" aria-label="Nextflow for HPC workshop materials" data-md-component="logo">
+      
+  <img src="../../assets/usyd-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nextflow for HPC workshop materials
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Part 1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Sydney-Informatics-Hub/nf4hpc-materials" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sydney-Informatics-Hub/nf4hpc-materials
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Nextflow for HPC workshop materials" class="md-nav__button md-logo" aria-label="Nextflow for HPC workshop materials" data-md-component="logo">
+      
+  <img src="../../assets/usyd-logo.png" alt="logo">
+
+    </a>
+    Nextflow for HPC workshop materials
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Sydney-Informatics-Hub/nf4hpc-materials" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sydney-Informatics-Hub/nf4hpc-materials
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instructor guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Instructor guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../logistics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training logistics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Training materials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Training materials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../materials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Materials guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0 Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-hpc-for-bioinformatics-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 HPC for bioinformatics workflows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-software-is-different-on-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Software is different on HPC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-hpc-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 HPC architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-work-smarter-not-harder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Work smarter, not harder!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-running-nextflow-on-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Running Nextflow on HPC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-intro-to-nf-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 Intro to nf-core
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-running-nf-core-on-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 Running nf-core on HPC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-configuring-nf-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8 Configuring nf-core
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-layering-nextflow-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.9 Layering Nextflow configurations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.10 Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-in-the-part-1-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known issues in the Part 1 materials
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pt2-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example workshop materials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Example workshop materials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_0_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.0 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_1_hpc_for_workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.1 HPC for bioinformatics workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_2_hpc_software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.2 Software is different on HPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_3_hpc_architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.3 HPC architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_4_smarter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.4 Work smarter, not harder!
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_5_nf_hpc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.5 Running Nextflow on HPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_6_nfcore_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.6 Intro to nf-core
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_7_nfcore_run/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.7 Running nf-core on HPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_8_nfcore_config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.8 Configuring nf-core
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_9_nfcore_layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.9 Layering Nextflow configurations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part1/01_10_outro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1.10 Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part 2
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part 2
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part2/20_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part2/21_firstrun/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Running a custom pipeline on HPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part2/22_reporting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Pipeline monitoring and reporting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part2/23_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Optimising Nextflow for HPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part2/24_resourcing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.4 Assigning process resources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part2/25_parallelisation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.5 Parallelisation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part2/27_scale/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.7 Scale to multiple samples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop/part2/28_outro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary and takeaways
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.0 Introduction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-hpc-for-bioinformatics-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 HPC for bioinformatics workflows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-software-is-different-on-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Software is different on HPC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-hpc-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 HPC architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-work-smarter-not-harder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Work smarter, not harder!
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-running-nextflow-on-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.5 Running Nextflow on HPC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-intro-to-nf-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.6 Intro to nf-core
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-running-nf-core-on-hpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.7 Running nf-core on HPC
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18-configuring-nf-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.8 Configuring nf-core
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19-layering-nextflow-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.9 Layering Nextflow configurations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.10 Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-issues-in-the-part-1-materials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Known issues in the Part 1 materials
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="part-1-teaching-guide">Part 1 teaching guide</h1>
+<div class="admonition tip">
+<p class="admonition-title">Part 1 goals and scope</p>
+<p>Part 1 builds the conceptual HPC foundations learners need to run Nextflow workflows well on a shared cluster, then applies them to configuring and running a real nf-core pipeline (<code>nf-core/sarek</code>). The key goals of Part 1 include:</p>
+<ul>
+<li>Explaining how HPCs differ from a laptop: shared, scheduled, and resource-constrained</li>
+<li>Giving learners hands-on experience with modules, containers, and submitting and inspecting scheduler jobs</li>
+<li>Building intuition for right-sizing resource requests (CPU, memory, walltime) and how this affects queue time and cost</li>
+<li>Showing how Nextflow executors and configuration files connect a workflow to the HPC scheduler</li>
+<li>Building an institutional HPC config from scratch, then layering a run-level config on top to tune an nf-core pipeline</li>
+</ul>
+<p>Part 1 is <strong>not</strong>:</p>
+<ul>
+<li>An introduction to writing Nextflow. Learners are expected to have completed "Hello Nextflow" or equivalent; Nextflow basics are only briefly refreshed in 1.5</li>
+<li>A variant calling or genomics workshop. WGS short variant calling is the running example, not the subject</li>
+<li>A deep dive into workflow optimisation. Part 1 introduces the concepts; Part 2 applies them hands-on to a custom pipeline</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Two systems, one workshop</p>
+<p>Every hands-on step is presented in synced tabs for <strong>NCI Gadi HPC (PBS Pro)</strong> and <strong>Pawsey Setonix HPC (Slurm)</strong> because we delivered the original workshop on both systems concurrently. If repeating this on NCI ad Pawsey, say out loud which tab you are on, and remind learners to pick their own system's tab once (the rest of the page follows). Many "it doesn't work" questions in Part 1 come from learners copying commands from the wrong tab.</p>
+<p>If your delivery uses a different system, project codes (<code>vp91</code>, <code>courses01</code>), queue names, module versions, and the Setonix <code>--reservation=NextflowHPC</code> flag all need updating throughout. See <a href="../materials/#adapting-the-materials">Training materials</a>.</p>
+</div>
+<h2 id="10-introduction">1.0 Introduction</h2>
+<p>This lesson gets everyone logged in, with the workspace set up and VSCode opened at the <code>part1</code> directory. Nothing conceptual happens here, but every later lesson depends on it, so don't rush it. Budget the full 15 minutes and have facilitators ready to troubleshoot one-on-one.</p>
+<ul>
+<li>Confirm with learners whether the workspace setup (1.0.2) has already been done for them. The lesson tells them you'll let them know on the day</li>
+<li>Ask learners to confirm their username in the terminal prompt before running anything</li>
+<li>Use the Zoom "Yes/No" reactions at the end of the lesson as a hard checkpoint. Don't move on until everyone is set up</li>
+</ul>
+<details class="note">
+<summary>Common setup issues</summary>
+<ul>
+<li><strong>Logged in as the wrong user:</strong> learners with existing Gadi or Setonix accounts may have an old entry for the same hostname in <code>~/.ssh/config</code>. The lesson shows how to spot and remove it</li>
+<li><strong>Gadi default project message:</strong> the Gadi setup script may change the user's default project to <code>vp91</code> and ask them to log out and back in. Learners need to close the VSCode window and reconnect, or later <code>$PROJECT</code>-based commands will use the wrong project</li>
+<li><strong>Wrong folder open in VSCode:</strong> later lessons use relative paths like <code>../data</code> and <code>../singularity</code>, so VSCode must be opened at <code>.../nextflow-on-hpc-materials/part1</code></li>
+</ul>
+</details>
+<h2 id="11-hpc-for-bioinformatics-workflows">1.1 HPC for bioinformatics workflows</h2>
+<p>This is a short lecture and discussion. It introduces what an HPC is, when a workflow actually needs one, and the WGS short variant calling scenario used throughout the workshop.</p>
+<p>Your main aim is for learners to leave with three words: <strong>shared, scheduled, resource-constrained</strong>. Every later lesson is a consequence of one of these. You can do this by:</p>
+<ul>
+<li>Framing HPC as a trade-off: massive scale in exchange for less flexibility</li>
+<li>Asking learners which of the "signs your workflow is ready for HPC" they have experienced themselves</li>
+<li>Reassuring learners that they don't need prior knowledge of variant calling. The workflow is a vehicle for the HPC concepts</li>
+<li>Using the "How does HPC help run this workflow?" question for discussion. The point is that each stage has a different bottleneck (I/O, CPU, memory), which sets up resource-aware design in 1.4</li>
+</ul>
+<details class="note">
+<summary>Why design <em>for</em> HPC, not just move <em>to</em> HPC</summary>
+<p>Learners often expect that a workflow that works on a laptop will simply run faster on an HPC. Emphasise that HPCs expect work to be submitted in a particular way (asynchronously, through a scheduler, with explicit resource requests), so workflows usually need to be designed with that in mind. This is where Nextflow helps: it handles the delayed, out-of-order execution that schedulers introduce.</p>
+</details>
+<h2 id="12-software-is-different-on-hpc">1.2 Software is different on HPC</h2>
+<p>This lesson explains why software installation is restricted on shared systems, then has learners run <code>fastqc</code> first with an environment module and then inside a Singularity container.</p>
+<p>The key idea to communicate is that <strong>containers are the recommended approach for Nextflow workflows</strong>. Modules are convenient but depend on what administrators provide; containers give learners control over versions and portability.</p>
+<ul>
+<li>Let learners hit <code>fastqc: command not found</code> themselves. It's a deliberate failure that motivates the rest of the lesson</li>
+<li>Point out that Gadi and Setonix provide <strong>different</strong> FastQC versions as modules (0.12.1 vs 0.11.9). This is a concrete example of why modules hurt reproducibility across systems</li>
+<li>Connect <code>singularity exec &lt;image&gt; &lt;command&gt;</code> to what Nextflow will do for every task later (1.8)</li>
+<li>Reinforce "one tool, one container, one process", as it comes back in Part 2</li>
+</ul>
+<details class="note">
+<summary>Module quirks to expect</summary>
+<ul>
+<li>On Setonix, default module versions are <strong>not</strong> loaded automatically; learners must specify the full version (e.g. <code>fastqc/0.11.9--hdfd78af_1</code>, <code>singularity/4.1.0-slurm</code>). Learners who type <code>module load fastqc</code> on Setonix will get an error</li>
+<li><code>module avail</code> opens a pager. Remind learners to press <code>q</code> to exit</li>
+<li>Learners should run <code>module unload fastqc</code> before the container exercise so they're sure the container, not the module, is providing <code>fastqc</code></li>
+</ul>
+</details>
+<details class="note">
+<summary>What about conda?</summary>
+<p>Learners may ask why conda isn't the recommended option. The comparison table covers it: conda is flexible for development but installs are slow, dependency conflicts are common, environments aren't fully reproducible, and they consume a lot of storage (and inodes) on shared filesystems. Nextflow supports conda, but containers are the best practice on HPC.</p>
+</details>
+<h2 id="13-hpc-architecture">1.3 HPC architecture</h2>
+<p>This lesson walks through the components of an HPC (login nodes, compute nodes, queues, shared storage, and the scheduler), then has learners submit <code>fastqc</code> as a scheduler job, first with command-line flags and then with header directives.</p>
+<p>Your main aim is for learners to understand that <strong>a job's shape (CPU, memory, walltime) determines when and where it runs</strong>. You can do this by:</p>
+<ul>
+<li>Using the scheduler Tetris analogy: well-shaped small jobs slot into gaps, while large awkward jobs wait</li>
+<li>Stressing that over-requesting is not "safe". It causes longer queue times and wasted allocation, not just higher cost</li>
+<li>Stating clearly that the login node is for preparing and submitting work, not running it</li>
+<li>Pointing learners to their system's queue documentation, and making the habit of "read the docs for your HPC" explicit</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Typing long multi-line commands</p>
+<p>The <code>qsub</code>/<code>sbatch</code> exercise is typed by hand with trailing backslashes. The most common errors are a missing space before <code>\</code>, and a trailing <code>\</code> on the final line. Walk through it slowly and suggest learners copy the block if they're falling behind.</p>
+</div>
+<details class="note">
+<summary>System-specific details learners ask about</summary>
+<ul>
+<li><strong>Gadi <code>-l storage=scratch/$PROJECT</code>:</strong> Gadi does not mount project storage in jobs by default. Forgetting this is a common real-world failure</li>
+<li><strong>Gadi <code>-l wd</code>:</strong> runs the job in the current working directory. Without it, the job starts in the home directory and relative paths break</li>
+<li><strong>Setonix <code>--reservation=NextflowHPC</code>:</strong> this is specific to the workshop's reserved node and will not exist outside the event</li>
+<li><strong>Internet on compute nodes:</strong> Setonix compute nodes have internet access; most Gadi compute nodes don't (only <code>copyq</code>, which is single-CPU, max 10 hours). This matters for pulling containers and reference data in real workflows, so suggest pre-downloading inputs where possible</li>
+</ul>
+</details>
+<details class="note">
+<summary>Job status codes</summary>
+<p>Learners will poll <code>qstat -u $USER</code> or <code>squeue -u $USER</code> and may not recognise the states. On Gadi: <code>Q</code> queued, <code>R</code> running, <code>E</code> ending. On Setonix: <code>PD</code> pending, <code>R</code> running, <code>CG</code> completing. Very short jobs may finish before learners see them in the queue at all.</p>
+</details>
+<p>Make sure learners complete 1.3.3: the job ID is saved to <code>run_id.txt</code> and is needed at the start of 1.4. Learners who skipped it will need to resubmit the job.</p>
+<h2 id="14-work-smarter-not-harder">1.4 Work smarter, not harder!</h2>
+<p>This lesson starts with a short exercise inspecting the resource usage of the previous job, then moves into a concept-heavy lecture on right-sizing, CPU and memory efficiency, multi-threading vs. multi-processing (scatter-gather), and how HPC jobs are charged.</p>
+<p>The key idea to communicate is that <strong>efficiency is measured, not guessed</strong>. Learners should leave knowing how to check what a job actually used and why that matters for queue time, cost, and fair use.</p>
+<ul>
+<li>Walk through the efficiency output line by line. Compare requested vs. used memory and calculate the efficiency together</li>
+<li>Use the <code>bwa mem</code> vs. <code>fastqc</code> threads graph: walltime drops with threads for <code>bwa mem</code> but not for <code>fastqc</code>. Not every tool benefits from more CPUs</li>
+<li>Stress that requesting 8 cores and running 8 threads must match; mismatches either slow the job or waste allocation</li>
+<li>For scatter-gather, always ask "does it make sense biologically to split this?". Per-chromosome variant calling is fine, joint genotyping is not</li>
+<li>Spend time on the "charged on max(CPU proportion, memory proportion)" model. This is the single most useful takeaway for learners paying for their own compute</li>
+</ul>
+<details class="note">
+<summary>Why does Setonix show 2 CPUs allocated?</summary>
+<p>In the <code>sacct</code>/<code>seff</code> output on Setonix, <code>AllocCPUS</code> shows 2 even though 1 CPU was requested, and CPU efficiency is reported against that. Learners may notice this. Setonix nodes have two hardware threads per physical core, so a 1-core request appears as 2 allocated CPUs. It doesn't change the lesson's point.</p>
+</details>
+<details class="note">
+<summary>Memory and walltime: slightly over-request</summary>
+<p>Learners can take "right-sizing" too far. Reinforce the nuance in the lesson:</p>
+<ul>
+<li><strong>Memory:</strong> exceeding the request kills the job, so a small buffer is cheaper than paying twice for a re-run</li>
+<li><strong>Walltime:</strong> both Gadi and Setonix charge for walltime <strong>used</strong>, not requested. Over-requesting walltime has no financial cost, only a possible queue-time cost</li>
+</ul>
+</details>
+<details class="note">
+<summary>Ideal memory per CPU</summary>
+<p>For purely cost-based optimisation, the "free" amount of memory per CPU is about 4 GB on Gadi's <code>normal</code> queue (190 GB / 48 CPUs) and about 3.5 GB on Setonix's <code>work</code> queue (230 GB / 64 CPUs). The proportions diagram is the clearest way to explain this. Learners will apply it when assigning process resources in Part 2.</p>
+</details>
+<h2 id="15-running-nextflow-on-hpc">1.5 Running Nextflow on HPC</h2>
+<p>This lesson connects the HPC concepts so far to Nextflow. It briefly refreshes processes, channels, and workflows, introduces executors, then has learners run a tiny demo workflow (<code>config-demo-nf</code>) on the compute nodes using a provided config and then a profile.</p>
+<p>Your main aim is to show that <strong>the executor is what turns Nextflow tasks into scheduler jobs</strong>, and that this is set in configuration, not in the workflow code. You can do this by:</p>
+<ul>
+<li>Keeping the Nextflow refresher short. Learners should already know it; check the room before going into detail</li>
+<li>Pointing to the <code>executor &gt; pbspro (1)</code> / <code>executor &gt; slurm (1)</code> line in the output as proof the task went to the scheduler</li>
+<li>Explaining that each task runs in its own <code>work/</code> subdirectory, and that data moves between tasks only through channels, which matters because tasks may run on different nodes</li>
+<li>Introducing profiles as a convenient way to bundle configuration, which learners will see heavily used in nf-core</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Running <code>nextflow run</code> on the login node</p>
+<p>Learners have just been told not to run work on the login node, and now they launch Nextflow there. Address this directly using the callout in the lesson: the head Nextflow job is lightweight and we do it here for simplicity, but real runs should use Gadi persistent sessions or Setonix workflow nodes (with <code>screen</code>/<code>tmux</code>) so the run survives logout and doesn't load the login node.</p>
+</div>
+<details class="note">
+<summary>Work directory hashes</summary>
+<p>The example output and the <code>tree work/</code> example in the lesson show different hashes (<code>a8/5345da</code> vs <code>6b/e8feb6</code>). Tell learners their hash will differ from both, and show them how to match the hash in their own terminal output to a directory in <code>work/</code>.</p>
+</details>
+<p>This is the natural break point in the Day 1 schedule.</p>
+<h2 id="16-intro-to-nf-core">1.6 Intro to nf-core</h2>
+<p>This is a short lecture and guided tour. It introduces the nf-core community, where to find pipelines and their documentation, and the <code>nf-core/sarek</code> pipeline used for the rest of Part 1.</p>
+<ul>
+<li>Frame nf-core around "don't reinvent the wheel": check whether a maintained pipeline exists before writing your own</li>
+<li>Do a live tour of <a href="https://nf-co.re">nf-co.re</a>, showing a pipeline page and its Usage, Parameters, and Output tabs. Learners will use the <code>sarek</code> docs in 1.7</li>
+<li>Show the sarek subway map, then narrow the focus to the <code>mapping</code> stage only. Walk through the eight processes and point out the scatter-gather pattern (<code>FASTP</code> splits, <code>BWAMEM1_MEM</code> aligns chunks, <code>MERGE_BAM</code> gathers), linking back to 1.4</li>
+<li>Note that the workshop clones sarek from GitHub for transparency, but in practice <code>nextflow run nf-core/&lt;pipeline&gt; -r &lt;version&gt;</code> pulls it automatically</li>
+</ul>
+<details class="note">
+<summary>Optional content: nf-core pipeline structure and <code>task.attempt</code></summary>
+<p>The collapsible section on pipeline structure and <code>conf/base.config</code> is optional. Point interested learners to it, but don't present it unless you're ahead of time. It is worth mentioning the layered resource defaults (<code>withLabel</code>, <code>withName</code>) because 1.9 builds on them.</p>
+<p>If learners ask about <code>* task.attempt</code>: it scales resources on retry, but doubling resources also doubles cost. The lesson shows more nuanced alternatives (adding a small increment, or sizing from input file size).</p>
+</details>
+<h2 id="17-running-nf-core-on-hpc">1.7 Running nf-core on HPC</h2>
+<p>This lesson introduces the samplesheet and other inputs for sarek's <code>mapping</code> step, then has learners build a <code>run.sh</code> script line by line. The script is deliberately <strong>not run</strong> at the end of the lesson.</p>
+<ul>
+<li>Go through the samplesheet columns and point out that the required columns depend on the sarek step being run (see the sarek usage docs)</li>
+<li>Explain that learners start with <code>samplesheet.single.csv</code> (one sample) to keep things fast, and scale up in 1.9</li>
+<li>Explain the "make it run small" parameters: <code>--step mapping</code>, <code>--skip_tools</code>, <code>--no_intervals</code>, and <code>--igenomes_ignore</code>. <code>--no_intervals</code> is a good discussion point: intervals are great for parallelising large genomes, but for this tiny dataset they would add overhead</li>
+<li>Make it explicit why you're stopping before running: there is no executor configured yet (it would run on the login node), and no container engine (tools aren't installed)</li>
+</ul>
+<details class="note">
+<summary>Common issues building <code>run.sh</code></summary>
+<ul>
+<li>Forgetting <code>chmod +x run.sh</code>, which gives a "permission denied" error later</li>
+<li>A missing <code>\</code> at the end of a line, or a stray one on the last line</li>
+<li>Opening the samplesheet: <code>../data</code> isn't visible in the VSCode explorer because it sits above the <code>part1</code> folder. Learners can use <code>code ../data/fqs/samplesheet.fq.csv</code></li>
+</ul>
+</details>
+<h2 id="18-configuring-nf-core">1.8 Configuring nf-core</h2>
+<p>This is the main hands-on lesson of Part 1 and the longest (30 minutes). Learners build an institutional HPC config (<code>config/gadi.config</code> or <code>config/setonix.config</code>) step by step, running the pipeline in between so failures motivate each addition.</p>
+<div class="admonition warning">
+<p class="admonition-title">Fail on purpose</p>
+<p>The first run after adding only the executor <strong>is meant to fail</strong> with <code>fastp: command not found</code> (exit status 127). Tell learners this before they run it. Then walk through the error message together, showing them where the Work dir is and the "replicate the issue" tip. Reading Nextflow errors is a skill they'll need in Part 2.</p>
+</div>
+<p>Your main aim is for learners to understand what each part of the config does and why it's needed on HPC. Build it in the order the lesson does:</p>
+<ol>
+<li><code>process.executor</code> and the <code>executor {}</code> scope (queue size, submit rate, polling), to submit jobs without overwhelming the scheduler</li>
+<li><code>singularity {}</code> with <code>cacheDir</code>, plus <code>process.module</code> to load Singularity on the compute node</li>
+<li><code>clusterOptions</code> for the project (and, on Setonix, the reservation); <code>storage</code> on Gadi</li>
+<li>A dynamic <code>queue</code> chosen from <code>task.memory</code></li>
+<li><code>stageInMode = 'symlink'</code> and <code>cache = 'lenient'</code></li>
+<li>The <code>trace {}</code> file, used to inspect resource usage</li>
+</ol>
+<details class="note">
+<summary>Points learners often get stuck on</summary>
+<ul>
+<li><strong><code>System.getenv()</code>:</strong> used to read <code>$PROJECT</code>/<code>$PAWSEY_PROJECT</code> and <code>$USER</code> so the config isn't hard-coded to one user. Briefly explain that this is Groovy</li>
+<li><strong>Gadi <code>storage</code> option:</strong> this is <strong>not</strong> a standard Nextflow option; it only exists in the Nextflow build on Gadi. Elsewhere, use <code>clusterOptions</code></li>
+<li><strong>Curly braces in <code>queue = { ... }</code>:</strong> the braces make it a closure that is evaluated per task, after <code>task.memory</code> is known. Without them, it would be evaluated once when the config loads</li>
+<li><strong><code>cache = 'lenient'</code>:</strong> shared parallel filesystems can report inconsistent timestamps, causing <code>-resume</code> to re-run tasks unnecessarily. Lenient mode ignores timestamps</li>
+<li><strong>Order of <code>-c</code> configs:</strong> files passed with <code>-c</code> take precedence over the pipeline's <code>nextflow.config</code>. 1.9 covers this properly</li>
+</ul>
+</details>
+<details class="note">
+<summary>The working run may be slow to start</summary>
+<p>With the full config, the pipeline runs but uses sarek's default resources (up to 24 CPUs and 30 GB for <code>BWAMEM1_MEM</code>). On a busy system, these jobs may queue for a while. This is the teaching point of the trace file: requested vs. <code>peak_rss</code> shows massive over-allocation, and 12 <code>BWAMEM1_MEM</code> tasks is overkill for this dataset. If the run hasn't finished after a few minutes, have learners cancel with <code>Ctrl + C</code> and use the example trace output in the lesson. Consider keeping a completed trace file handy as a fallback.</p>
+</details>
+<details class="note">
+<summary>nf-core institutional configs</summary>
+<p>End by showing that the config they built is a simplified version of the published <a href="https://nf-co.re/configs/nci_gadi/">NCI Gadi</a> and <a href="https://nf-co.re/configs/pawsey_setonix/">Pawsey Setonix</a> configs. Learners sometimes ask why they didn't just use those from the start: building one from scratch is how they learn what each option does, and community configs often still need adjusting (e.g. more complex queue logic, GPU queues).</p>
+</details>
+<h2 id="19-layering-nextflow-configurations">1.9 Layering Nextflow configurations</h2>
+<p>This lesson explains configuration priority and process selectors, then has learners write a run-level <code>config/custom.config</code> that uses <code>withName</code> to right-size each sarek process, and finally scale to three samples with <code>-resume</code>.</p>
+<p>The key idea to communicate is the <strong>three levels of configuration</strong>, each in its own file:</p>
+<ol>
+<li><strong>Pipeline-level</strong> (<code>nextflow.config</code>, <code>conf/*.config</code>): ships with the pipeline, never edited</li>
+<li><strong>Institution-level</strong> (<code>gadi.config</code>/<code>setonix.config</code>): specific to the system, reusable across pipelines</li>
+<li>
+<p><strong>Run-level</strong> (<code>custom.config</code>): tunes a pipeline to a specific dataset</p>
+</li>
+<li>
+<p>Use the collapsible <code>params.value</code> example ("hello" → "bye" → "seeya" → "ciao") to demonstrate priority if learners are unsure. It's quick and memorable</p>
+</li>
+<li>Emphasise that with <code>-c a.config,b.config</code>, later files win</li>
+<li>When comparing the before/after trace files, connect back to 1.4: <code>FASTQC</code> and <code>MULTIQC</code> now use a large share of their memory, and the tiny jobs aren't worth reducing further because they're already below the "free" memory per CPU</li>
+<li>Point out that giving <code>FASTP</code> 2 CPUs means it splits the FASTQ into 2 chunks, so only 2 <code>BWAMEM1_MEM</code> tasks run instead of 12. A resource setting changed the scatter width</li>
+</ol>
+<details class="note">
+<summary>Process directive priority</summary>
+<p>From lowest to highest: generic <code>process {}</code> settings in config → directives in the process definition → <code>withLabel</code> → <code>withName</code>. Learners are sometimes surprised that a generic config setting is <strong>overridden</strong> by the process definition, but <code>withName</code> in config overrides both.</p>
+</details>
+<details class="note">
+<summary>Managing expectations about the optimisation</summary>
+<p>Be upfront that learners may not see much difference in queue time or cost for this tiny dataset, especially if the system is quiet. The aim is the practice, which matters at real scale. See the "How much will this improve our run?" callout in the lesson.</p>
+</details>
+<details class="note">
+<summary>Scaling up with <code>-resume</code></summary>
+<p>In the final exercise, previously completed tasks for the first sample are reused and only the two new samples run, while <code>MULTIQC</code> re-runs because its input changed. If learners cancelled their earlier run or changed <code>custom.config</code> in between, more tasks may re-run than expected. This is a good chance to explain what goes into a task's hash.</p>
+</details>
+<h2 id="110-summary">1.10 Summary</h2>
+<p>A short instructor-led recap and Q&amp;A. Revisit the four themes in the lesson (HPCs are shared systems, containers are your friend, Nextflow is portable, fine-tune for your data) and preview Part 2: applying the same ideas to a custom WGS pipeline, including implementing scatter-gather themselves.</p>
+<p>Use the remaining time to collect questions, and check in on anyone who fell behind so they're ready for Part 2.</p>
+<h2 id="known-issues-in-the-part-1-materials">Known issues in the Part 1 materials</h2>
+<p>Check these before delivery:</p>
+<ul>
+<li><strong>1.5:</strong> the example output hash (<code>a8/5345da</code>) doesn't match the <code>work/6b/e8feb6</code> directory described in the text</li>
+<li><strong>1.6:</strong> the text refers to "tomorrow's section" and quotes pipeline counts "at the time of writing". Adjust for your schedule</li>
+<li><strong>1.7:</strong> the "previous section" link points to <code>./02_1_nfcore_intro.md</code>, which doesn't exist; it should point to <code>./01_6_nfcore_intro.md</code></li>
+<li><strong>1.8.1:</strong> the exercise says to create <code>config/hpc.config</code>, but the commands create <code>config/gadi.config</code> or <code>config/setonix.config</code></li>
+<li><strong>1.8.4:</strong> the closing paragraphs comparing the workshop config with nf-core configs sit inside the Setonix tab only, so Gadi learners won't see them unless they switch tabs</li>
+<li><strong>1.9.1:</strong> the default process setting example reads <code>process.cpu = 1</code>; the directive is <code>cpus</code></li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../materials/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Materials guide">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Materials guide
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../pt2-guide/" class="md-footer__link md-footer__link--next" aria-label="Next: Part 2">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Part 2
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
