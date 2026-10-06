@@ -1,6 +1,6 @@
-site_name: "Nextflow for the life sciences workshop materials"
+site_name: "Nextflow for HPC workshop materials"
 repo_url: "https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}"
-repo_name: "Nextflow for the life sciences workshop materials"
+repo_name: "Nextflow for HPC workshop materials"
 
 nav:
   # INSTRUCTOR_START
