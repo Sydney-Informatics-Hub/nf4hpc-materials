@@ -1,4 +1,4 @@
-# Nextflow for HPC
+# Nextflow for HPC 
 
 This workshop will teach you how to configure, run, and optimise Nextflow workflows on high performance computing (HPC) systems. The content is broken up into 2 parts. In the first part we will cover the HPC concepts that matter for running workflows, and apply them to configuring and running an nf-core pipeline on HPC. In the second part we will take a custom multi-sample pipeline, get it running on HPC, then profile, optimise, and scale it. See the [workshop schedule](#workshop-schedule) for the lesson plan.
 
