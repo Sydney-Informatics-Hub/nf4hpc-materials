@@ -1,2 +1,39 @@
 # This CITATION.cff file was generated with cffinit.
 # Visit https://bit.ly/cffinit to generate yours today!
+cff-version: 1.2.0
+title: Nextflow for HPC Training Materials
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - family-names: "Geaghan"
+    given-names: "Michael"
+    orcid: "0000-0002-4350-8600"
+  - family-names: "Samaha"
+    given-names: "Georgina"
+    orcid: "0000-0003-0419-1476"
+  - family-names: "O’Brien"
+    given-names: "Mitchell"
+    orcid: "0000-0003-0662-9101"
+  - family-names: "Jaya"
+    given-names: "Frederick"
+    orcid: "0000-0002-4019-7026"
+  - family-names: "Mori"
+    given-names: "Giorgia"
+    orcid: "0000-0003-3469-5632"
+repository-code: 'https://github.com/Sydney-Informatics-Hub/nf4hpc-materials'
+url: 'https://github.com/Sydney-Informatics-Hub/nf4hpc-materials'
+abstract: >-
+  Nextflow for HPC Training Materials bundle.
+keywords:
+  - nextflow
+  - bioinformatics
+  - workflows
+  - training
+  - cli
+license: CC-BY-4.0
+identifiers:
+  - type: doi
+    value: "TBD"
+    description: "Archived snapshot of this release on Zenodo"
