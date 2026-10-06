@@ -63,18 +63,15 @@ See [Training environment](environment.md) for setup requirements and [Training 
 
 Use the lesson guides below to record teaching notes, common questions, anticipated errors, and suggestions from previous deliveries.
 
-<!-- Replace the titles and filenames with your actual workshop parts.
-     Remove the cards until the corresponding guide pages exist. -->
-
 <div class="grid cards" style="grid-template-columns: repeat(2, 1fr);" markdown>
 
--   :material-puzzle:{ .lg .middle } **Part 1 - [Title]**
+-   :material-puzzle:{ .lg .middle } **Part 1 - Introduction to HPC concepts**
 
     ---
 
     [:octicons-arrow-right-24: Teaching notes and delivery guidance](pt1-guide.md)
 
--   :fontawesome-solid-hand:{ .lg .middle } **Part 2 - [Title]**
+-   :fontawesome-solid-hand:{ .lg .middle } **Part 2 - Workflow deployment on HPC**
 
     ---
 
