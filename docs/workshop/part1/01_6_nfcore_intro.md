@@ -10,7 +10,7 @@ We have now seen how a Nextflow pipeline can be configured to run on an HPC. In 
 
 ## 1.6.1 What is nf-core?
 
-![nf-core logo](../assets/nf-core-logo.png)
+![nf-core logo](../../assets/nf-core-logo.png)
 
 nf-core is a community-driven effort to develop and curate open-source bioinformatics workflows built with Nextflow.
 
@@ -76,7 +76,7 @@ singularity/
 
 The `nf-core/sarek` pipeline is a large workflow dedicated to performing variant calling on genome sequencing data. It is highly configurable and incoroprates a wide variety of tools and methods for detecting both germline and somatic variants.
 
-![The structure of the nf-core/sarek pipeline](../assets/sarek_subway.png)
+![The structure of the nf-core/sarek pipeline](../../assets/sarek_subway.png)
 
 The pipeline consists of three main stages:
 

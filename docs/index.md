@@ -52,4 +52,4 @@ It will help you to:
 
 This resource was developed by the Sydney Informatics Hub, University of Sydney and Australian BioCommons, enabled by Australian BioCommons’ [BioCLI Platforms Project](https://www.biocommons.org.au/biocli). Funding was provided by NCRIS via [Bioplatforms Australia](https://bioplatforms.com/).
 
-![](assets/logos.png)
+![](workshop/img/logos.png)

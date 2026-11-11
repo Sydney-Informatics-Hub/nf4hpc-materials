@@ -1,162 +1,86 @@
-# Training environment
+# Training infrastructure
 
-This page provides information about the technical setup required to run the *Nextflow for HPC* workshop.
+This page lists what you need in place before delivering the *Nextflow for HPC* workshop. Step-by-step instructions for preparing a training environment are in the [setup guide](https://github.com/GiorgiaMori/nf4hpc-materials/blob/main/setup/README.md).
 
-The workshop requires access to a Linux HPC environment with a supported job scheduler. Materials can be adapted for:
+The workshop runs on a Linux high-performance computing (HPC) system with a job scheduler. We have delivered it on:
 
-- Institutional HPC systems
-- National HPC systems
-- Cloud-based training clusters with a job scheduler
-- Other preconfigured HPC training environments
+- [NCI Gadi](https://nci.org.au/our-systems/hpc-systems), which uses the PBS Pro scheduler
+- [Pawsey Setonix](https://pawsey.org.au/systems/setonix/), which uses the Slurm scheduler
 
-## Hardware and resource requirements
+The materials can be adapted to other HPC systems. See [Adapting the materials](materials.md#adapting-the-materials).
 
-Participants require a personal computer with a reliable internet connection. Workflow execution takes place on the training HPC system.
+## What participants need
 
-Trainers should arrange sufficient compute capacity and storage for all participants to complete the exercises.
-
-| Requirement | Workshop specification |
-| ----------- | ---------------------- |
-| Operating system | Linux |
-| Scheduler | Slurm / PBS Pro / other supported scheduler |
-| CPUs per task | Insert requirements for workshop tasks |
-| Memory per task | Insert requirements for workshop tasks |
-| Task walltime | [Insert expected runtime and requested limits] |
-| Storage per participant | [Insert space required for data, containers, work directories, and outputs] |
-| Compute allocation | [Insert project/account and allocation requirements] |
-| Queue or partition | [Insert training queue or partition] |
-| Concurrent jobs | [Insert per-user limits and capacity needed for the learner group] |
-
-## Software requirements
-
-### Participants
-
-Participants require a personal computer with:
+Participants need a personal computer with:
 
 - A web browser
-- An SSH client
-- A code editor, such as VSCode with the Remote - SSH extension, if supported by the training system
-- Access to the selected HPC environment
+- An SSH client (built in on macOS and Linux; Windows users may need [OpenSSH](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse))
+- [VSCode](https://code.visualstudio.com/) with the Remote - SSH extension (see the [participant setup instructions](../workshop/setup.md))
 - Any VPN or multi-factor authentication tools required by the HPC provider
 
-Before the workshop, participants should install the required software and confirm that they can connect to the training system.
+Each participant also needs their own training account on the HPC, with access to the training project and permission to submit jobs.
 
-### Training environment
+Before the workshop, participants should confirm they can log in.
 
-The following software must be installed and available to all participants:
+## What the HPC system needs
 
-- Nextflow
-- A Java version compatible with the selected Nextflow version
-- Singularity or Apptainer for container execution
-- The selected scheduler’s job submission and monitoring commands
-- Any additional tools required by the workshop exercises
+| Requirement | Gadi (PBS Pro) | Setonix (Slurm) |
+| ----------- | -------------- | --------------- |
+| Training project | `vp91` | `courses01` |
+| Workshop folder | `/scratch/vp91/<user>/nextflow-on-hpc-materials` | `/scratch/courses01/<user>/nextflow-on-hpc-materials` |
+| Queue or partition | `normalbw` | `work` |
+| Nextflow | `module load nextflow/24.04.5` | `module load nextflow/24.10.0` |
+| Singularity (runs software containers) | `module load singularity` | `module load singularity/4.1.0-slurm` |
+| Reservation | None | `NextflowHPC` |
+| Container images | Pre-pulled into `<workshop folder>/singularity` | Pre-pulled into `<workshop folder>/singularity` |
 
-Record the versions tested with the workshop materials:
+Java is provided by the Nextflow module, so it does not need to be installed separately.
 
-| Software | Tested version | How participants access it |
-| -------- | -------------- | -------------------------- |
-| Nextflow | [Insert version] | Module |
-| Java | [Insert version] | Module |
-| Singularity | [Insert version] | Module |
+Workshop tasks are small. Most request 1–2 CPUs and about 2–9 GB of memory, and the workshop configuration limits each participant to 30 jobs at once (`queueSize = 30`).
 
-## HPC access and configuration
-
-Participants must have:
-
-- An active account on the training system
-- Access to the required project or compute allocation
-- Permission to submit jobs to the selected queue or partition
-- Access to suitable working and output directories
-
-Provide the local settings needed for the workshop:
-
-| Setting | Value or instructions |
-| ------- | --------------------- |
-| Login hostname | [Insert hostname] |
-| Account setup | [Insert registration or access instructions] |
-| Project/account code | [Insert code or explain how participants obtain it] |
-| Nextflow executor | [Insert executor appropriate to the scheduler] |
-| Queue or partition | [Insert name] |
-| Main Nextflow job | [Explain where and how to run it under local HPC policy] |
-| Working directory | [Insert path or instructions] |
-| Output directory | [Insert path or instructions] |
-| Container cache | [Insert path and configuration instructions] |
-
-### Main Nextflow job and workflow tasks
-
-Explain where participants should run the main Nextflow job and how it submits individual workflow tasks to the scheduler.
-
-[Insert the workshop’s submission script or link to the relevant instructions. Include any required account, queue, CPU, memory, and walltime settings.]
-
-### Filesystem access
-
-The main Nextflow job and scheduled tasks must be able to access the required workflow files, inputs, containers, and work directory.
-
-[Describe shared filesystem paths, permissions, storage quotas, and any site-specific restrictions.]
+If you deliver on another system, replace the values above with the equivalents for your site.
 
 ## Workshop files and data
 
-Stage the workshop files and data before the session.
+All code and data are in [nextflow-on-hpc-materials](https://github.com/Sydney-Informatics-Hub/nextflow-on-hpc-materials):
 
-| Resource | Location or setup instructions |
-| -------- | ------------------------------ |
-| Workshop code | [Insert repository URL and release] |
-| Input data | `data/` in [nextflow-on-hpc-materials](https://github.com/Sydney-Informatics-Hub/nextflow-on-hpc-materials): paired FASTQs for three samples (`data/fqs/`, with samplesheets), and the chr20–22 reference FASTA, index, dictionary, and BWA index (`data/ref/`) |
-| Nextflow configuration | Part 1: `config-demo-nf` profiles `pbspro`/`slurm`, then learners build `config/gadi.config` or `config/setonix.config` and `config/custom.config` for sarek. Part 2: `config/pbspro.config` or `config/slurm.config` (via `-profile`) plus `config/custom.config` |
-| Container images | [Insert image locations] |
-| Example outputs and logs | [Insert location of fallback materials] |
+- `data/`: sequencing data for three samples, and a reference genome (chromosomes 20–22)
+- `part1/`: configuration and script examples for Part 1
+- `part2/`: the custom pipeline used in Part 2
+- `setup.gadi.sh` and `setup.setonix.sh`: scripts that prepare each participant's workspace
 
-Each participant clones `nextflow-on-hpc-materials` into their own scratch directory (`/scratch/vp91/<user>` on Gadi, `/scratch/courses01/<user>` on Setonix) and runs the setup script for their system, as described in [lesson 1.0.2](../workshop/part1/01_0_intro.md#102-setup-the-workspace). All lessons then read the data by relative path (`../data/...`). Trainers can run this setup ahead of time for each training account; tell participants on the day whether it has already been done.
+Each participant copies this into their own scratch folder and runs the setup script for their system, as described in [lesson 1.0.2](../workshop/part1/01_0_intro.md#102-setup-the-workspace). You can run this for each account before the workshop. If you do, tell participants on the day, because they can then skip that step.
+
+Part 1 uses [nf-core/sarek](https://nf-co.re/sarek) version 3.5.0, which the setup script downloads.
 
 ## Containers
 
-Make all required container images available before the workshop to avoid download delays.
+Containers package software so that it runs the same way everywhere. The workshop uses Singularity containers and pre-pulls them so participants do not wait for downloads. The setup guide explains how to build and share this set of container images.
 
-Trainers should confirm that:
+## Settings to confirm locally
 
-- Images are compatible with the training system
-- Participants can read the images from compute nodes
-- Required input, work, and output directories are accessible inside containers
-- Container cache directories have sufficient space and suitable permissions
-- Any restrictions on network access or container execution are addressed
+The materials do not state the following. Fill this in for your delivery:
 
-[Insert image preparation instructions and any required bind paths or Nextflow container settings.]
+| Setting | Your value |
+| ------- | ---------- |
+| Storage available per participant | |
+| Maximum jobs per participant | |
+| Training account expiry date | |
+| Support contact | |
 
-## Preconfigured setup
+## Pre-workshop checklist
 
-[Link to the setup instructions for the selected HPC system.]
+- [ ] All participants can log in to the training system
+- [ ] `nextflow -version` works after loading the module
+- [ ] Participants can submit and monitor a small job
+- [ ] Containers run on compute nodes
+- [ ] Workshop files and data are readable and writable for each participant
+- [ ] A small test workflow completes
+- [ ] The queue or partition can handle all participants running jobs at once
+- [ ] Storage limits and job limits are sufficient
+- [ ] A shared space for questions (for example Slack or a Google Doc) is set up and linked
+- [ ] Example outputs and logs are available in case live jobs are delayed
 
-These instructions should cover:
+## After the workshop
 
-- Account access and login
-- Loading the required software
-- Obtaining workshop files and data
-- Preparing container images
-- Configuring the scheduler and resource requests
-- Running a small test workflow
-
-## Recommended pre-workshop checks
-
-Before the workshop begins, trainers should verify:
-
-- All participants can connect to the training system
-- Nextflow returns the expected version using `nextflow -version`
-- Java and the container runtime return the expected versions
-- Participants can submit and monitor a small scheduler job
-- Containers can execute successfully on compute nodes
-- Workshop files and data are readable from the required locations
-- Participants can write to their work and output directories
-- A small Nextflow workflow completes using the workshop configuration
-- The training queue and compute allocation can support concurrent participant jobs
-- Storage quotas and job limits are sufficient
-- Shared learner support space is set up and linked
-- Completed outputs and logs are available if live jobs are delayed
-
-## Cleanup after the workshop
-
-[Explain which files participants should retain, which temporary files can be removed, and when training accounts or storage will expire.]
-
-- **Files to retain:** [Scripts, configuration, reports, or other outputs]
-- **Files to remove:** [Temporary work directories or copied training data]
-- **Access expiry:** [Insert date or policy]
-- **Support contact:** [Insert contact details]
+Tell participants which files to keep, such as their configuration files and reports, and when their training account or storage will expire.

@@ -307,7 +307,7 @@ Let's add both the `executor` and `queue` configuration options to our system-sp
         process {
             // Load the globally installed singularity/4.1.0-slurm module before running any process
             module = 'singularity/4.1.0-slurm'
-            // Run using the pbspro scheduler on the 'normalbw' queue
+            // Run using the slurm scheduler on the 'work' partition
             executor = 'slurm'
             queue = 'work'
         }
@@ -421,7 +421,7 @@ Note that for Setonix, we have specified a `reservation`. This enables us to use
         process {
             // Load the globally installed singularity/4.1.0-slurm module before running any process
             module = 'singularity/4.1.0-slurm'
-            // Run using the pbspro scheduler on the 'normalbw' queue
+            // Run using the slurm scheduler on the 'work' partition
             executor = 'slurm'
             queue = 'work'
             clusterOptions = "--account=${System.getenv('PAWSEY_PROJECT')} --reservation=NextflowHPC"
@@ -772,10 +772,10 @@ You’ve now built the scaffolding needed to begin fine-tuning your resource req
         process {
             // Load the globally installed singularity/4.1.0-slurm module before running any process
             module = 'singularity/4.1.0-slurm'
-            // Run using the pbspro scheduler on the 'normalbw' queue
+            // Run using the slurm scheduler on the 'work' partition
             executor = 'slurm'
             queue = 'work'
-            clusterOptions = "--account=${System.getenv('PAWSEY_PROJECT')} --reservations=NextflowHPC"
+            clusterOptions = "--account=${System.getenv('PAWSEY_PROJECT')} --reservation=NextflowHPC"
             cache = 'lenient'
             stageInMode = 'symlink'
         }

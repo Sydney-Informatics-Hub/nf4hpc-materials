@@ -5,11 +5,10 @@ A GitHub template repository for delivering the **Nextflow for HPC** workshop. W
 ## Using this template
 
 1. Click [**Use this template** on the GitHub repository](https://github.com/Sydney-Informatics-Hub/nf4hpc-materials) and create a new repository under your org/username
-2. The `template.yml` workflow fires automatically on the first push, running cookiecutter to:
-   - Populate the repo with the workshop materials from this template
+2. The `template.yml` workflow fires automatically on the first push and:
    - Replace repo name, site name, and GitHub username throughout
-   - Strip instructor-only notes
-   - Set up the MkDocs deploy workflow
+   - Strip instructor-only notes and the `setup/` folder
+   - Remove the template workflow so it only runs once
 3. After a few seconds, your repo will contain the full workshop site, ready to deploy to GitHub Pages.
 
 ## What the generated repo contains

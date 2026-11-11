@@ -8,7 +8,7 @@
     
 ## 1.7.1 An overview of the inputs
 
-As mentioned in the [previous section](./02_1_nfcore_intro.md), we will be running a small section of the overall `sarek` workflow: the `mapping` stage. This stage requires a few distinct inputs:
+As mentioned in the [previous section](./01_6_nfcore_intro.md), we will be running a small section of the overall `sarek` workflow: the `mapping` stage. This stage requires a few distinct inputs:
 
 - FASTQ files: These are plain text files that contain the sequences of the reads that came from the sequencing machine.
 - A **samplesheet**: A `.csv` file that describes each sample, its name, and where to find its associated FASTQ files.

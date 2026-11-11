@@ -1,0 +1,64 @@
+name: Apply template
+
+on:
+  push:
+    branches: [main]
+
+# Required so `git push` works with GITHUB_TOKEN
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    if: github.repository != 'Sydney-Informatics-Hub/nf4hpc-materials' && github.repository != 'GiorgiaMori/nf4hpc-materials'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Check if already applied
+        id: check
+        shell: bash
+        run: |
+          if [ -f .template-applied ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Substitute placeholders
+        if: steps.check.outputs.skip == 'false'
+        shell: bash
+        env:
+          REPO: ${{ github.event.repository.name }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          find . -not -path './.git/*' \( -name "*.yml" -o -name "*.md" \) -print0 | \
+            xargs -0 sed -i \
+              -e "s|{{cookiecutter.repo_name}}|$REPO|g" \
+              -e "s|{{cookiecutter.github_username}}|$OWNER|g" \
+              -e "s|{{cookiecutter.site_name}}|$REPO|g"
+
+      - name: Restructure for participant delivery
+        if: steps.check.outputs.skip == 'false'
+        shell: bash
+        run: |
+          rm -rf docs/instructor/ setup/ CONTRIBUTING.md CITATION.cff
+          sed -i '/# INSTRUCTOR_START/,/# INSTRUCTOR_END/d' mkdocs.yml
+
+      - name: Commit and self-destruct
+        if: steps.check.outputs.skip == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          touch .template-applied
+          rm -f .github/workflows/template.yml
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          git commit -m "Apply template"
+          git push origin HEAD:main
